@@ -1,5 +1,8 @@
 # VisionBoard – AI-Powered, Cloud-Native Goal Management Platform
 
+![Node.js](https://img.shields.io/badge/Node.js-18.x-green) 
+![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey)
+
 VisionBoard is an AI-enhanced, cloud-native goal management platform designed for simplicity, impact, and real-world scalability.
 
 It blends a clean **Node.js API backend**, a modern **Next.js 15 frontend**, and modular **FastAPI AI microservices** into one seamless experience — empowering users to set meaningful goals, gain smart insights, and stay motivated on their journey.
