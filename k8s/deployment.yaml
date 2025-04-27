@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: visionboard-frontend
+  labels:
+    app: visionboard-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: visionboard-frontend
+  template:
+    metadata:
+      labels:
+        app: visionboard-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: your-dockerhub-username/visionboard-frontend:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NEXT_PUBLIC_API_BASE_URL
+              value: "http://visionboard-backend.visionboard.svc.cluster.local:8080"
+            - name: NEXT_PUBLIC_AI_API_BASE_URL
+              value: "http://visionboard-ai-service.visionboard.svc.cluster.local:8000"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "250m"
+              memory: "256Mi"
