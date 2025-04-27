@@ -39,7 +39,7 @@ export async function deleteGoal(id: string) {
 
 export async function updateGoal(id: string, status: string) {
   await safeJsonFetch<void>(`${API_BASE}/goals/${id}`, {
-    method: 'PUT',
+    method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ status }),
   });
