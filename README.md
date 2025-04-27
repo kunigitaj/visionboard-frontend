@@ -198,7 +198,9 @@ These AI enhancements make the experience more intuitive, empowering, and focuse
 
 The content and source code in this project are the intellectual property of Kunigitaj. Unauthorized reproduction, modification, or distribution without express permission is strictly prohibited.
 
-This work is licensed under the [Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/).
+This work is licensed under the [Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/), allowing non-commercial use with attribution.
+
+Users are free to remix, adapt, and build upon this work non-commercially, provided they credit Kunigitaj and license their new creations under identical terms.
 
 ---
 
