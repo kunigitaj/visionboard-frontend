@@ -59,20 +59,23 @@ visionboard-frontend/
 
 ### VisionBoard Architecture Diagram  
 
+#### VisionBoard Kubernetes Cluster (GKE + Docker)
+
 ```mermaid
 flowchart TD
-  subgraph VisionBoard_Kubernetes_Cluster["VisionBoard Kubernetes Cluster (GKE + Docker)"]
+  subgraph VisionBoard_Kubernetes_Cluster
     direction TB
 
-    Browser([User's Browser]):::external --> LB_FE[["Frontend Service<br/>(LoadBalancer)"]]:::service
-    LB_FE --> FE["Frontend<br>(Next.js + Chakra UI)"]:::frontend
-    FE --> LB_Backend[["Backend Service<br/>(LoadBalancer)"]]:::service
-    FE --> LB_AI[["AI Service<br/>(LoadBalancer)"]]:::service
-    LB_Backend --> Backend["Backend API<br>(Node.js + Express)"]:::backend
-    LB_AI --> AI["AI Microservices<br>(FastAPI - Python)"]:::ai
-    Backend --> DB[("PostgreSQL / Cloud SQL<br>Database")]:::database
+    Browser(["User's Browser"]):::external --> LB_FE[["Frontend Service (LoadBalancer)"]]:::service
+    LB_FE --> FE["Frontend (Next.js + Chakra UI)"]:::frontend
+    FE --> LB_Backend[["Backend Service (LoadBalancer)"]]:::service
+    FE --> LB_AI[["AI Service (LoadBalancer)"]]:::service
+    LB_Backend --> Backend["Backend API (Node.js + Express)"]:::backend
+    LB_AI --> AI["AI Microservices (FastAPI - Python)"]:::ai
+    Backend --> DB[(PostgreSQL / Cloud SQL Database)]:::database
   end
 
+  %% Styles
   style Browser fill:#ffffff,stroke:#999,stroke-width:2px,color:#333
   style FE fill:#ebf8ff,stroke:#3182ce,stroke-width:2px,color:#2b6cb0
   style Backend fill:#f0fff4,stroke:#38a169,stroke-width:2px,color:#276749
