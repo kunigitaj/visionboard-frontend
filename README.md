@@ -38,18 +38,19 @@ It blends a clean **Node.js API backend**, a modern **Next.js 15 frontend**, and
 flowchart TD
   subgraph GKE_DOCKER_CLUSTER["GKE DOCKER CLUSTER"]
     direction TB
+    FE["Frontend<br>(Next.js + Chakra UI)"]
     Backend["Backend API<br>(Node.js + Express)"]
     AI["AI Microservices<br>(FastAPI - Python)"]
     DB[("PostgreSQL / Cloud SQL<br>Database")]
   end
 
-  FE["Frontend<br>(Next.js + Chakra UI)"] --> Backend & AI
+  FE --> Backend & AI
   Backend --> DB
 
+  style FE fill:#ebf8ff,stroke:#3182ce,stroke-width:2px,color:#2b6cb0
   style Backend fill:#f0fff4,stroke:#38a169,stroke-width:2px,color:#276749
   style AI fill:#fffaf0,stroke:#ed8936,stroke-width:2px,color:#c05621
   style DB fill:#fff5f5,stroke:#e53e3e,stroke-width:2px,color:#9b2c2c
-  style FE fill:#ebf8ff,stroke:#3182ce,stroke-width:2px,color:#2b6cb0
   style GKE_DOCKER_CLUSTER fill:#fcf8e3,stroke:#805ad5,stroke-width:3px,color:#6b46c1
 ```
 
@@ -201,17 +202,22 @@ kubectl apply -k k8s/
 
 ---
 
-## AI Services Overview
+## 🚀 AI Services Overview (Updated)
 
 | AI Capability          | Description                                                           |
 |:------------------------|:----------------------------------------------------------------------|
-| Goal Expansion          | Expand short goals into clear, actionable, and motivational step-by-step plans. |
-| Sentiment Analysis      | Detect the emotional tone (POSITIVE/NEGATIVE) in goal descriptions.   |
-| Success Prediction      | Predict the likelihood of successfully achieving a goal.             |
-| Keyword Extraction      | Extract key topics and focus areas from goal text.                   |
-| Motivational Rephrasing | Rewrite goals into more inspiring and empowering language.           |
+| Goal Expansion          | Transform short goals into clear, motivational, step-by-step action plans. |
+| Sentiment Analysis      | Detect the emotional tone (POSITIVE/NEGATIVE) within goal descriptions. |
+| Success Prediction      | Predict the likelihood of successfully achieving a goal based on title and description. |
+| Keyword Extraction      | Extract key topics, focus areas, and intentions from goal text. |
+| Motivational Rephrasing | Rewrite goals into more inspiring, action-driven versions to boost user motivation. |
 
-These REST-based AI microservices create a smarter, more motivational, and goal-oriented experience — helping users transform aspirations into tangible achievements. All AI enhancements are modular microservices — easy to upgrade, extend, and scale.
+Each capability is delivered as a **modular FastAPI microservice**, allowing seamless upgrades, scaling, and independent improvements over time.
+
+- **Instruction-tuned text generation models** power the expansions.  
+- **State-of-the-art semantic embeddings** drive predictions and analysis.  
+- **Lightweight, real-time AI microservices** optimized for production-readiness.  
+- **Fully containerized** for portable, cloud-native deployments across GKE clusters.
 
 ---
 
