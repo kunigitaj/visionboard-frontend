@@ -32,30 +32,6 @@ It blends a clean **Node.js API backend**, a modern **Next.js 15 frontend**, and
 
 ---
 
-## Architecture Diagram
-
-```mermaid
-flowchart TD
-  subgraph GKE_DOCKER_CLUSTER["GKE DOCKER CLUSTER"]
-    direction TB
-    FE["Frontend<br>(Next.js + Chakra UI)"]
-    Backend["Backend API<br>(Node.js + Express)"]
-    AI["AI Microservices<br>(FastAPI - Python)"]
-    DB[("PostgreSQL / Cloud SQL<br>Database")]
-  end
-
-  FE --> Backend & AI
-  Backend --> DB
-
-  style FE fill:#ebf8ff,stroke:#3182ce,stroke-width:2px,color:#2b6cb0
-  style Backend fill:#f0fff4,stroke:#38a169,stroke-width:2px,color:#276749
-  style AI fill:#fffaf0,stroke:#ed8936,stroke-width:2px,color:#c05621
-  style DB fill:#fff5f5,stroke:#e53e3e,stroke-width:2px,color:#9b2c2c
-  style GKE_DOCKER_CLUSTER fill:#fcf8e3,stroke:#805ad5,stroke-width:3px,color:#6b46c1
-```
-
----
-
 ## Project Structure
 
 ```plaintext
@@ -82,7 +58,30 @@ visionboard-frontend/
 ```
 
 ### VisionBoard Architecture Diagram  
-(Coming Soon – Modular Frontend, Backend API, and AI Microservices.)
+
+```mermaid
+flowchart TD
+  subgraph VisionBoard_Kubernetes_Cluster["VisionBoard Kubernetes Cluster (GKE + Docker)"]
+    direction TB
+
+    Browser([User's Browser]):::external --> LB_FE[["Frontend Service<br/>(LoadBalancer)"]]:::service
+    LB_FE --> FE["Frontend<br>(Next.js + Chakra UI)"]:::frontend
+    FE --> LB_Backend[["Backend Service<br/>(LoadBalancer)"]]:::service
+    FE --> LB_AI[["AI Service<br/>(LoadBalancer)"]]:::service
+    LB_Backend --> Backend["Backend API<br>(Node.js + Express)"]:::backend
+    LB_AI --> AI["AI Microservices<br>(FastAPI - Python)"]:::ai
+    Backend --> DB[("PostgreSQL / Cloud SQL<br>Database")]:::database
+  end
+
+  style Browser fill:#ffffff,stroke:#999,stroke-width:2px,color:#333
+  style FE fill:#ebf8ff,stroke:#3182ce,stroke-width:2px,color:#2b6cb0
+  style Backend fill:#f0fff4,stroke:#38a169,stroke-width:2px,color:#276749
+  style AI fill:#fffaf0,stroke:#ed8936,stroke-width:2px,color:#c05621
+  style DB fill:#fff5f5,stroke:#e53e3e,stroke-width:2px,color:#9b2c2c
+  style VisionBoard_Kubernetes_Cluster fill:#fcf8e3,stroke:#805ad5,stroke-width:3px,color:#6b46c1
+  classDef service fill:#d1f0ff,stroke:#2b6cb0,stroke-width:1.5px,color:#1e3a8a
+  classDef external fill:#ffffff,stroke:#999,stroke-width:2px,color:#333
+```
 
 ---
 
