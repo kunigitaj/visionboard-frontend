@@ -17,17 +17,41 @@ It blends a clean **Node.js API backend**, a modern **Next.js 15 frontend**, and
 - **User-Centric Frontend**: Sleek Chakra UI, mobile responsiveness, intuitive flows.
 - **Fully Dockerized**: Easily containerized across backend, frontend, and AI microservices.
 - **DevOps-Ready**: GitHub Actions CI/CD pipeline samples included.
+- _Built to be modular, extensible, and enterprise-friendly from day one._
 
 ---
 
 ## Tech Stack
 
-| Frontend                      | Backend              | Cloud & DevOps                |
-|:-----------------------------|:---------------------|:-----------------------------|
-| Next.js 15 (App Router)       | Node.js (Express)    | Google Kubernetes Engine (GKE)|
-| React 19 + Chakra UI          | RESTful API Design   | Cloud SQL (or Postgres)       |
-| TypeScript 5                  | Docker               | Terraform (optional)          |
-| Modern AIDA UX Principles     | CI/CD with GitHub Actions | Kubernetes YAML Files   |
+| Frontend                      | Backend              | Cloud, DevOps & Containerization                |
+|:-----------------------------|:---------------------|:------------------------------------------------|
+| Next.js 15 (App Router)       | Node.js (Express)    | Google Kubernetes Engine (GKE), Cloud SQL (or Postgres), Docker Hub (or any Container Registry), Terraform (optional) |
+| React 19 + Chakra UI          | RESTful API Design   | Kubernetes YAML Files                            |
+| TypeScript 5                  | Docker               | CI/CD with GitHub Actions                        |
+| Modern AIDA UX Principles     | CI/CD with GitHub Actions |                                               |
+
+---
+
+## Architecture Diagram
+
+```mermaid
+flowchart TD
+  subgraph GKE_DOCKER_CLUSTER["GKE DOCKER CLUSTER"]
+    direction TB
+    Backend["Backend API<br>(Node.js + Express)"]
+    AI["AI Microservices<br>(FastAPI - Python)"]
+    DB[("PostgreSQL / Cloud SQL<br>Database")]
+  end
+
+  FE["Frontend<br>(Next.js + Chakra UI)"] --> Backend & AI
+  Backend --> DB
+
+  style Backend fill:#f0fff4,stroke:#38a169,stroke-width:2px,color:#276749
+  style AI fill:#fffaf0,stroke:#ed8936,stroke-width:2px,color:#c05621
+  style DB fill:#fff5f5,stroke:#e53e3e,stroke-width:2px,color:#9b2c2c
+  style FE fill:#ebf8ff,stroke:#3182ce,stroke-width:2px,color:#2b6cb0
+  style GKE_DOCKER_CLUSTER fill:#fcf8e3,stroke:#805ad5,stroke-width:3px,color:#6b46c1
+```
 
 ---
 
@@ -55,6 +79,9 @@ visionboard-frontend/
 ├── k8s/                 # Kubernetes manifests (deployment, service, ingress)
 └── README.md
 ```
+
+### VisionBoard Architecture Diagram  
+(Coming Soon – Modular Frontend, Backend API, and AI Microservices.)
 
 ---
 
@@ -163,7 +190,7 @@ kubectl apply -k k8s/
 
 ---
 
-## API Overview
+## VisionBoard API Endpoints
 
 | Endpoint        | Method | Description                                      |
 |:----------------|:-------|:------------------------------------------------|
@@ -176,15 +203,15 @@ kubectl apply -k k8s/
 
 ## AI Services Overview
 
-| AI Capability        | Description                              |
-|:----------------------|:-----------------------------------------|
-| Summarization         | Condense goal descriptions into key points |
-| Sentiment Analysis    | Detect emotional tone (POSITIVE/NEGATIVE) |
-| Success Prediction    | Predict likelihood of goal achievement  |
-| Keyword Extraction    | Identify core focus areas in goals       |
-| Motivational Rephrasing| Reframe goals in inspiring language     |
+| AI Capability          | Description                                                           |
+|:------------------------|:----------------------------------------------------------------------|
+| Goal Expansion          | Expand short goals into clear, actionable, and motivational step-by-step plans. |
+| Sentiment Analysis      | Detect the emotional tone (POSITIVE/NEGATIVE) in goal descriptions.   |
+| Success Prediction      | Predict the likelihood of successfully achieving a goal.             |
+| Keyword Extraction      | Extract key topics and focus areas from goal text.                   |
+| Motivational Rephrasing | Rewrite goals into more inspiring and empowering language.           |
 
-These AI enhancements make the experience more intuitive, empowering, and focused.
+These REST-based AI microservices create a smarter, more motivational, and goal-oriented experience — helping users transform aspirations into tangible achievements. All AI enhancements are modular microservices — easy to upgrade, extend, and scale.
 
 ---
 
@@ -194,6 +221,7 @@ These AI enhancements make the experience more intuitive, empowering, and focuse
 - Success likelihood scores and positive reinforcement displayed per goal.
 - Sentiment analysis and keywords subtly guide user reflection and action.
 - Responsive design ensures smooth experience across all devices.
+- Fully containerized for portability across dev, staging, and production clusters.
 
 ---
 
