@@ -204,7 +204,7 @@ kubectl apply -k k8s/
 
 ---
 
-## 🚀 AI Services Overview (Updated)
+## AI Services Overview (Updated)
 
 | AI Capability          | Description                                                           |
 |:------------------------|:----------------------------------------------------------------------|
